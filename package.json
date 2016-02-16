@@ -2,11 +2,13 @@
   "name": "webpack.react-hot-loader",
   "version": "1.0.0",
   "description": "Webpack + React Hot Loader",
-  "main": "app.js",
+  "main": "watch.js",
   "author": "Sergey Slipchenko <faergeek@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "build": "webpack",
+    "preview": "webpack && node preview"
   },
   "dependencies": {
     "babel-core": "^5.8.9",
@@ -14,8 +16,14 @@
     "browser-sync": "^2.8.0",
     "react": "^0.13.3",
     "react-hot-loader": "^1.2.8",
+    "react-lite": "0.0.23",
     "webpack": "^1.10.5",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^1.1.0"
+  },
+  "devDependencies": {
+    "compression": "1.6.1",
+    "rx": "4.0.7",
+    "rx-dom": "7.0.3"
   }
 }

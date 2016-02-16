@@ -29,7 +29,7 @@ $ npm start
 To see `react-hot-loader` in action, edit `js/HelloWorld.jsx`
 
 
-### Preview of `app.js`:
+### Preview of `watch.js`:
 ```js
 /**
  * Require Browsersync along with webpack and middleware for it
