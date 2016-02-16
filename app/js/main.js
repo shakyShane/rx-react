@@ -1,7 +1,7 @@
 import React from 'react';
 import MiniCart from './MiniCart';
 import Rx from 'rx-dom/dist/rx.dom';
-
+import _set from 'lodash.set';
 
 /**
  * Initial state
@@ -37,6 +37,11 @@ const reducers = {
     },
     BLANK: function (state) {
         return state;
+    },
+    CLEAR_MESSAGES: function (state) {
+        const copy = Object.assign({}, state);
+        _set(copy, 'data.messages.messages', []);
+        return copy;
     }
 };
 
@@ -48,15 +53,16 @@ const asyncMiddlewares = {
         return Rx.Observable.concat(
             Rx.Observable.just({type: 'LOADING', data: true}),
             Rx.DOM.getJSON('/data/load-added.json')
-                .delay(2000)
-                .map(resp => ({type: 'UPDATE', data: resp}))
+                .delay(1000)
+                .map(resp => ({type: 'UPDATE', data: resp})),
+            Rx.Observable.just({type: 'CLEAR_MESSAGES'})
+                .delay(3000)
         )
     },
     ASYNC_UPDATE: () => {
         return Rx.Observable.concat(
             Rx.Observable.just({type: 'LOADING', data: true}),
             Rx.DOM.getJSON('/data/load.json')
-                .delay(1000)
                 .map(resp => ({type: 'UPDATE', data: resp}))
         );
     }

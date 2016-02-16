@@ -23,6 +23,8 @@
   },
   "devDependencies": {
     "compression": "1.6.1",
+    "lodash.get": "4.1.2",
+    "lodash.set": "4.0.0",
     "rx": "4.0.7",
     "rx-dom": "7.0.3"
   }

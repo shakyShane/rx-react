@@ -21,14 +21,14 @@ export default class MiniCart extends React.Component {
     }
 
     render() {
-
+        const messages = this.state.data.messages.messages;
         return (
             <div className={this.state.loading ? 'loading' : ''}>
                 { this.state.loading ? <p>Loading, please wait</p> : null }
                 { this.state.loading ? null : <p>Click to Add an item to the cart</p> }
                 Items in Cart: {this.state.data.cart.summary_count}
                 <button onClick={this.addToCart.bind(this)} style={{marginLeft: '10px'}} disabled={this.state.loading}>Add More</button>
-                <Messages store={this.props.store} />
+                <Messages messages={messages} />
             </div>
         );
     }
