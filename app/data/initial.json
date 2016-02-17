@@ -1,0 +1,15 @@
+{
+  "data": {
+    "cart": {
+      "summary_count": 0
+    },
+    "messages": {
+      "messages": [],
+      "data_id": 0
+    },
+    "customer": {
+      "data_id": 0
+    }
+  },
+  "loading": false
+}

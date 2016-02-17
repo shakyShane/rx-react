@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "compression": "1.6.1",
+    "json-loader": "0.5.4",
     "lodash.get": "4.1.2",
     "lodash.set": "4.0.0",
     "rx": "4.0.7",

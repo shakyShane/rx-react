@@ -1,130 +1,26 @@
 import React from 'react';
 import MiniCart from './MiniCart';
-import Rx from 'rx-dom/dist/rx.dom';
-import _set from 'lodash.set';
+import store from './store/store';
+import reducers from './reducers/main';
+import asyncMiddlewares from './middlewares/async';
 
 /**
- * Initial state
- * @type {{cart: {summary_count: number}}}
+ * Initial state from json file
  */
-const initial = {
-    data:{
-        cart: {
-            summary_count: 0
-        },
-        "messages": {
-            "messages": [],
-            "data_id": 0
-        },
-        "customer": {
-            "data_id": 0
-        }
-    },
-    loading: false
-};
+const initial = require('json!../data/initial.json');
 
 /**
- * Reducers for synchronously updating the state object
+ * Create the store
  */
-const reducers = {
-    LOADING: (state, data) => {
-        state.loading = data;
-        return state;
-    },
-    UPDATE: function (state, data) {
-        const newState = Object.assign({}, state, {data: data}, {loading: false});
-        return newState;
-    },
-    BLANK: function (state) {
-        return state;
-    },
-    CLEAR_MESSAGES: function (state) {
-        const copy = Object.assign({}, state);
-        _set(copy, 'data.messages.messages', []);
-        return copy;
-    }
-};
+const mainStore = store(initial, reducers, asyncMiddlewares);
 
 /**
- * Middlewares for async updates
+ * Dispatch the update method to retrieve
+ * users state on page load.
  */
-const asyncMiddlewares = {
-    ASYNC_ADD: () => {
-        return Rx.Observable.concat(
-            Rx.Observable.just({type: 'LOADING', data: true}),
-            Rx.DOM.getJSON('/data/load-added.json')
-                .delay(1000)
-                .map(resp => ({type: 'UPDATE', data: resp})),
-            Rx.Observable.just({type: 'CLEAR_MESSAGES'})
-                .delay(3000)
-        )
-    },
-    ASYNC_UPDATE: () => {
-        return Rx.Observable.concat(
-            Rx.Observable.just({type: 'LOADING', data: true}),
-            Rx.DOM.getJSON('/data/load.json')
-                .map(resp => ({type: 'UPDATE', data: resp}))
-        );
-    }
-};
+mainStore.dispatch({type: 'ASYNC_UPDATE'});
 
 /**
- * Store
+ * Now render a component
  */
-const state = new Rx.BehaviorSubject(initial);
-const actions = new Rx.BehaviorSubject({type: 'BLANK'});
-
-/**
- * Apply middlewares + reducers on state for every action
- * that occurs
- */
-const storeUpdates$ = actions
-    .flatMap(applyMiddlewares)
-    .map(x => {
-        const reducer = reducers[x.type];
-
-        if (reducer === undefined) {
-            console.error(`Reducer for the action type '${x.type}' was not found`);
-            return {reducer: reducers['BLANK']};
-        }
-
-        return {
-            reducer: reducers[x.type],
-            data: x.data
-        };
-    })
-    .scan((state, incoming) => incoming.reducer.apply(null, [state, incoming.data]), initial)
-    .share();
-
-// let the stream flow
-storeUpdates$.subscribe(state);
-
-const store = {
-    dispatch: function (obj) {
-        actions.onNext(obj);
-    },
-    getState: function () {
-        return state.getValue();
-    },
-    subscribe: storeUpdates$.subscribe.bind(storeUpdates$)
-};
-
-// ask for initial data
-actions.onNext({type: 'ASYNC_UPDATE'});
-
-
-/**
- * Just a helper for picking out values
- * @param incoming
- * @returns {*}
- */
-function applyMiddlewares (incoming) {
-    if (asyncMiddlewares[incoming.type]) {
-        return asyncMiddlewares[incoming.type](incoming);
-    } else {
-        return Rx.Observable.just(incoming);
-    }
-}
-
-
-React.render(<MiniCart store={store} />, document.getElementById('mini-cart'));
+React.render(<MiniCart store={mainStore} />, document.getElementById('mini-cart'));
