@@ -1,5 +1,5 @@
 import React from 'react';
-import MiniCart from './MiniCart';
+import MiniCart from './components/MiniCart';
 import store from './store/store';
 import reducers from './reducers/main';
 import asyncMiddlewares from './middlewares/async';

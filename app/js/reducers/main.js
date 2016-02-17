@@ -1,3 +1,5 @@
+const _set = require('lodash.set');
+
 /**
  * Reducers for synchronously updating the state object
  */
@@ -14,6 +16,7 @@ module.exports = {
         return state;
     },
     CLEAR_MESSAGES: function (state) {
+        console.log('clear');
         const copy = Object.assign({}, state);
         _set(copy, 'data.messages.messages', []);
         return copy;
