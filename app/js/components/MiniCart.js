@@ -1,5 +1,7 @@
 import React from 'react';
 import Messages from './Messages.jsx';
+import * as cartActions from '../actions/cart';
+import * as globalActions from '../actions/global';
 
 export default class MiniCart extends React.Component {
 
@@ -9,15 +11,15 @@ export default class MiniCart extends React.Component {
 
     componentWillMount() {
         this.setState(this.props.store.getState());
-        this.subscription$ = this.props.store.subscribe((data) => this.setState(data));
         this.props.store.subscribe((data) => this.setState(data));
-    }
-    componentWillUnmount() {
-        this.subscription$.dispose();
     }
 
     addToCart () {
-        this.props.store.dispatch({type: 'ASYNC_ADD'});
+        this.props.store.dispatch(cartActions.addToCart());
+    }
+
+    clearCart() {
+        this.props.store.dispatch(cartActions.clearCart());
     }
 
     render() {
@@ -28,6 +30,7 @@ export default class MiniCart extends React.Component {
                 { this.state.loading ? null : <p>Click to Add an item to the cart</p> }
                 Items in Cart: {this.state.data.cart.summary_count}
                 <button onClick={this.addToCart.bind(this)} style={{marginLeft: '10px'}} disabled={this.state.loading}>Add More</button>
+                <button onClick={this.clearCart.bind(this)} style={{marginLeft: '10px'}} disabled={this.state.loading}>Clear Cart</button>
                 <Messages messages={messages} />
             </div>
         );

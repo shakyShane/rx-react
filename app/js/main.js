@@ -1,24 +1,27 @@
 import React from 'react';
-import MiniCart from './components/MiniCart';
 import store from './store/store';
-import reducers from './reducers/main';
-import asyncMiddlewares from './middlewares/async';
+import reducers from './reducers/global';
+import asyncReducers from './reducers/async';
+
+import {update} from './actions/global';
+
+import MiniCart from './components/MiniCart';
 
 /**
  * Initial state from json file
  */
-const initial = require('json!../data/initial.json');
+const initialData = require('json!../data/initial.json');
 
 /**
  * Create the store
  */
-const mainStore = store(initial, reducers, asyncMiddlewares);
+const mainStore = store(initialData, reducers, asyncReducers);
 
 /**
  * Dispatch the update method to retrieve
  * users state on page load.
  */
-mainStore.dispatch({type: 'ASYNC_UPDATE'});
+mainStore.dispatch(update());
 
 /**
  * Now render a component

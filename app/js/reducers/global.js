@@ -1,22 +1,25 @@
+import * as globalActions from '../actions/global';
+
+export const LOADING = 'LOADING';
+
 const _set = require('lodash.set');
 
 /**
  * Reducers for synchronously updating the state object
  */
-module.exports = {
-    LOADING: (state, data) => {
+export default {
+    [globalActions.LOADING]: function loadingReducer(state, data) {
         state.loading = data;
         return state;
     },
-    UPDATE: function (state, data) {
+    [globalActions.UPDATE]: function updateReducer(state, data) {
         const newState = Object.assign({}, state, {data: data});
         return newState;
     },
-    BLANK: function (state) {
+    [globalActions.BLANK]: function blankReducer(state) {
         return state;
     },
-    CLEAR_MESSAGES: function (state) {
-        console.log('clear');
+    [globalActions.CLEAR_MESSAGES]: function clearMessagesReducer (state) {
         const copy = Object.assign({}, state);
         _set(copy, 'data.messages.messages', []);
         return copy;

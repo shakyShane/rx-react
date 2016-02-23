@@ -1,0 +1,42 @@
+{
+  "messages": {
+    "messages": [],
+    "data_id": 1455627221
+  },
+  "customer": {
+    "data_id": 1455627221
+  },
+  "compare-products": {
+    "count": 0,
+    "countCaption": "0 items",
+    "listUrl": "http:\/\/example.com\/catalog\/product_compare\/index\/uenc\/aHR0cDovL20yLndlYXJlamguY29tL2N1c3RvbWVyL3NlY3Rpb24vbG9hZC8_c2VjdGlvbnM9JnVwZGF0ZV9zZWN0aW9uX2lkPWZhbHNlJl89MTQ1NTYyNzIyMDEyNA,,\/",
+    "items": [],
+    "data_id": 1455627221
+  },
+  "last-ordered-items": {
+    "items": [],
+    "data_id": 1455627221
+  },
+  "cart": {
+    "summary_count": 0,
+    "subtotal": "<span class=\"price\">\u00a377.00<\/span>",
+    "possible_onepage_checkout": true,
+    "items": [],
+    "extra_actions": "",
+    "isGuestCheckoutAllowed": true,
+    "subtotal_incl_tax": "<span class=\"price\">\u00a377.00<\/span>",
+    "subtotal_excl_tax": "<span class=\"price\">\u00a377.00<\/span>",
+    "data_id": 1455627221
+  },
+  "review": {
+    "nickname": "",
+    "title": "",
+    "detail": "",
+    "data_id": 1455627221
+  },
+  "wishlist": {
+    "counter": null,
+    "items": [],
+    "data_id": 1455627221
+  }
+}

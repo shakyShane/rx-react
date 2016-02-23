@@ -1,6 +1,6 @@
 import Rx from 'rx-dom/dist/rx.dom';
 
-export default function store(initial, reducers, asyncMiddlewares) {
+export default function store(initial, reducers, asyncReducers) {
 
     /**
      * `state` is the single, shared application state
@@ -18,17 +18,23 @@ export default function store(initial, reducers, asyncMiddlewares) {
      * (if it exists) or a reducer that matches the 'type' key
      */
     const storeUpdates$ = actions$
-
         /**
-         * Apply any middlewares
+         * Merge the incoming action with the current state
          */
-        .flatMap(applyMiddlewares)
-
+        .withLatestFrom(state$, (action, state) => ({action, state}))
+        /**
+         * Process middlewares (note, middlewares themselves can return
+         * actions
+         */
+        .flatMap(x => applyAsyncReducers(x.action, x.state))
         /**
          * Now pick out the reducer that matches the action type
          */
         .map(x => {
 
+            /**
+             * Now try to select the reducer
+             */
             const reducer = reducers[x.type];
 
             /**
@@ -59,7 +65,7 @@ export default function store(initial, reducers, asyncMiddlewares) {
     storeUpdates$.subscribe(state$);
 
     /**
-     * Create a `store` with similiar methods
+     * Create a `store` with similar methods
      */
     const store = {
         dispatch: function (obj) {
@@ -72,15 +78,15 @@ export default function store(initial, reducers, asyncMiddlewares) {
     };
 
     /**
-     * Look at the incoming action, if its type matches an async middleware,
+     * Look at the incoming action, if its type matches an async reducer,
      * return the result from that, otherwise just pass along the value
      * (as it will be dealt with in reducers)
      * @param {{type: string}} incoming
      * @returns {*}
      */
-    function applyMiddlewares (incoming) {
-        if (typeof asyncMiddlewares[incoming.type] === 'function') {
-            return asyncMiddlewares[incoming.type].call(null, incoming);
+    function applyAsyncReducers (incoming) {
+        if (typeof asyncReducers[incoming.type] === 'function') {
+            return asyncReducers[incoming.type].apply(null, arguments);
         } else {
             return Rx.Observable.just(incoming);
         }

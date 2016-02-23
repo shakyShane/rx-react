@@ -14,7 +14,7 @@
   "compare-products": {
     "count": 0,
     "countCaption": "0 items",
-    "listUrl": "http:\/\/m2.wearejh.com\/catalog\/product_compare\/index\/uenc\/aHR0cDovL20yLndlYXJlamguY29tL2N1c3RvbWVyL3NlY3Rpb24vbG9hZC8_c2VjdGlvbnM9JnVwZGF0ZV9zZWN0aW9uX2lkPWZhbHNlJl89MTQ1NTYyNzIyMDEyNA,,\/",
+    "listUrl": "http:\/\/example.com\/catalog\/product_compare\/index\/uenc\/aHR0cDovL20yLndlYXJlamguY29tL2N1c3RvbWVyL3NlY3Rpb24vbG9hZC8_c2VjdGlvbnM9JnVwZGF0ZV9zZWN0aW9uX2lkPWZhbHNlJl89MTQ1NTYyNzIyMDEyNA,,\/",
     "items": [],
     "data_id": 1455627221
   },
@@ -41,14 +41,14 @@
         ],
         "qty": 1,
         "item_id": "91",
-        "configure_url": "http:\/\/m2.wearejh.com\/checkout\/cart\/configure\/id\/91\/product_id\/1385\/",
+        "configure_url": "http:\/\/example.com\/checkout\/cart\/configure\/id\/91\/product_id\/1385\/",
         "is_visible_in_site_visibility": true,
         "product_name": "Juno Jacket",
-        "product_url": "http:\/\/m2.wearejh.com\/juno-jacket.html",
+        "product_url": "http:\/\/example.com\/juno-jacket.html",
         "product_has_url": true,
         "product_price": "\n\n    <span class=\"price-excluding-tax\" data-label=\"Excl. Tax\">\n            <span class=\"minicart-price\">\n            <span class=\"price\">\u00a377.00<\/span>        <\/span>\n\n        <\/span>\n",
         "product_image": {
-          "src": "http:\/\/m2.wearejh.com\/pub\/media\/catalog\/product\/cache\/1\/thumbnail\/78x78\/beff4985b56e3afdbeabfc89641a4582\/w\/j\/wj06-purple_main.jpg",
+          "src": "http:\/\/example.com\/pub\/media\/catalog\/product\/cache\/1\/thumbnail\/78x78\/beff4985b56e3afdbeabfc89641a4582\/w\/j\/wj06-purple_main.jpg",
           "alt": "Juno Jacket",
           "width": "78",
           "height": "78"
@@ -69,14 +69,14 @@
         ],
         "qty": 1,
         "item_id": "92",
-        "configure_url": "http:\/\/m2.wearejh.com\/checkout\/cart\/configure\/id\/91\/product_id\/1385\/",
+        "configure_url": "http:\/\/example.com\/checkout\/cart\/configure\/id\/91\/product_id\/1385\/",
         "is_visible_in_site_visibility": true,
         "product_name": "Juno Jacket",
-        "product_url": "http:\/\/m2.wearejh.com\/juno-jacket.html",
+        "product_url": "http:\/\/example.com\/juno-jacket.html",
         "product_has_url": true,
         "product_price": "\n\n    <span class=\"price-excluding-tax\" data-label=\"Excl. Tax\">\n            <span class=\"minicart-price\">\n            <span class=\"price\">\u00a377.00<\/span>        <\/span>\n\n        <\/span>\n",
         "product_image": {
-          "src": "http:\/\/m2.wearejh.com\/pub\/media\/catalog\/product\/cache\/1\/thumbnail\/78x78\/beff4985b56e3afdbeabfc89641a4582\/w\/j\/wj06-purple_main.jpg",
+          "src": "http:\/\/example.com\/pub\/media\/catalog\/product\/cache\/1\/thumbnail\/78x78\/beff4985b56e3afdbeabfc89641a4582\/w\/j\/wj06-purple_main.jpg",
           "alt": "Juno Jacket",
           "width": "78",
           "height": "78"
