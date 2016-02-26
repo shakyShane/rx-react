@@ -6,6 +6,7 @@ import asyncReducers from './reducers/async';
 import {update} from './actions/global';
 
 import MiniCart from './components/MiniCart';
+import AddToCartForm from './components/AddToCartForm.jsx';
 
 /**
  * Initial state from json file
@@ -27,3 +28,4 @@ mainStore.dispatch(update());
  * Now render a component
  */
 React.render(<MiniCart store={mainStore} />, document.getElementById('mini-cart'));
+React.render(<AddToCartForm store={mainStore} />, document.getElementById('add-to-cart'));

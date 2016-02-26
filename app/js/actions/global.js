@@ -50,6 +50,24 @@ export function ajaxRequest(url, delay = 1000) {
 }
 
 /**
+ * @param {string} url
+ * @returns {Rx.Observable[]}
+ */
+export function ajaxPost(url, data, delay = 1000) {
+    return [
+        setLoading(true),
+        Rx.DOM.post({
+            url,
+            responseType: 'json',
+            body: data
+        })
+            .delay(delay)
+            .map(resp => update(resp)),
+        setLoading(false)
+    ];
+}
+
+/**
  * Helper for dispatching clear messages action
  * @return {Rx.Observable}
  */

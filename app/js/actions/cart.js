@@ -1,5 +1,5 @@
 import Rx from 'rx-dom/dist/rx.dom';
-import {ajaxRequest, clearMessages} from './global';
+import {ajaxRequest, ajaxPost, clearMessages} from './global';
 
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const CLEAR_CART = 'CLEAR_CART';
@@ -8,9 +8,10 @@ export const CLEAR_CART = 'CLEAR_CART';
  * action creator for adding to cart
  * @returns {{type: string}}
  */
-export function addToCart(/* data here needed for post etc */) {
+export function addToCart(data) {
     return {
-        type: ADD_TO_CART
+        type: ADD_TO_CART,
+        data: data
     }
 }
 
@@ -34,9 +35,9 @@ export const actionHandlers = {
      * Add an item to the cart
      */
     [ADD_TO_CART]: (action, state) => {
-        console.log(action, state);
+        console.log(action);
         return Rx.Observable.concat([
-            ...ajaxRequest('/data/load-added.json', 1000),
+            ...ajaxPost('/data/load-added.json', action.data),
             clearMessages()
         ]);
     },
