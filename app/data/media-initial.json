@@ -1,0 +1,70 @@
+{
+  "mixins": [
+    "magnifier/magnify"
+  ],
+  "magnifierOpts": {
+    "fullscreenzoom": "5",
+    "top": "",
+    "left": "",
+    "width": "",
+    "height": "",
+    "eventType": "hover",
+    "enabled": "false"
+  },
+  "data": [
+    {
+      "thumb": "http:\/\/m2.wearejh.com\/pub\/media\/catalog\/product\/cache\/2\/thumbnail\/90x90\/beff4985b56e3afdbeabfc89641a4582\/w\/s\/wsh01-black_back.jpg",
+      "img": "http:\/\/m2.wearejh.com\/pub\/media\/catalog\/product\/cache\/2\/image\/700x700\/e9c3970ab036de70892d86c6d221abfe\/w\/s\/wsh01-black_back.jpg",
+      "full": "http:\/\/m2.wearejh.com\/pub\/media\/catalog\/product\/cache\/2\/image\/e9c3970ab036de70892d86c6d221abfe\/w\/s\/wsh01-black_back.jpg",
+      "caption": "",
+      "position": "1",
+      "isMain": false
+    },
+    {
+      "thumb": "http:\/\/m2.wearejh.com\/pub\/media\/catalog\/product\/cache\/2\/thumbnail\/90x90\/beff4985b56e3afdbeabfc89641a4582\/w\/s\/wsh01-black_main.jpg",
+      "img": "http:\/\/m2.wearejh.com\/pub\/media\/catalog\/product\/cache\/2\/image\/700x700\/e9c3970ab036de70892d86c6d221abfe\/w\/s\/wsh01-black_main.jpg",
+      "full": "http:\/\/m2.wearejh.com\/pub\/media\/catalog\/product\/cache\/2\/image\/e9c3970ab036de70892d86c6d221abfe\/w\/s\/wsh01-black_main.jpg",
+      "caption": "",
+      "position": "1",
+      "isMain": true
+    }
+  ],
+  "options": {
+    "nav": "thumbs",
+    "loop": true,
+    "keyboard": true,
+    "arrows": true,
+    "allowfullscreen": true,
+    "showCaption": false,
+    "width": 700,
+    "thumbwidth": 90,
+    "thumbheight": 90,
+    "height": 700,
+    "transitionduration": 500,
+    "transition": "slide",
+    "navarrows": true,
+    "navtype": "slides",
+    "navdir": "horizontal"
+  },
+  "fullscreen": {
+    "nav": "thumbs",
+    "loop": true,
+    "navdir": "horizontal",
+    "arrows": false,
+    "showCaption": false,
+    "transitionduration": 500,
+    "transition": "dissolve"
+  },
+  "breakpoints": {
+    "mobile": {
+      "conditions": {
+        "max-width": "767px"
+      },
+      "options": {
+        "options": {
+          "navigation": "dots"
+        }
+      }
+    }
+  }
+}
